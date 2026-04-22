@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Quick Daily Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <header>
+    <div class="inner">
+      <a class="logo" href="/">Quick Daily Games</a>
+      <nav>
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>About</h1>
+    </div>
+
+    <p class="about-lead">Quick Daily Games is an independent mobile app offering a fresh set of puzzles every day — Sudoku 6×6, Nonogram, Queens, and more to come.</p>
+    <p>The idea is simple: give yourself a short, satisfying mental challenge each morning. No endless levels, no timers you didn't ask for — just one good puzzle per game, renewed daily for everyone at the same time.</p>
+    <p>The app is developed and maintained by <a href="https://fantoine.com" target="_blank">Fabien Antoine</a>.</p>
+    <p>Questions or feedback? Reach out at <a class="email-link" data-u="apps" data-d="fantoine.com" href="#">apps&#64;fantoine&#46;com</a></p>
+    <script>document.querySelector('.email-link').addEventListener('click',function(e){e.preventDefault();location.href='mailto:'+this.dataset.u+'@'+this.dataset.d;});</script>
+  </main>
+
+  <footer>
+    <a href="/">Home</a><span class="sep">·</span>
+    <a href="/privacy">Privacy Policy</a><span class="sep">·</span>
+    <a href="/terms">Terms of Use</a>
+  </footer>
+</body>
+</html>
