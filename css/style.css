@@ -125,6 +125,14 @@ main {
 .badge-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
 .badge-sub { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; }
 .badge-main { font-size: 15px; font-weight: 600; font-family: var(--font-display); }
+.badge--active {
+  opacity: 1;
+  cursor: pointer;
+  border-color: rgba(56,217,217,0.3);
+  text-decoration: none;
+}
+.badge--active:hover { border-color: rgba(56,217,217,0.6); text-decoration: none; }
+
 .soon {
   position: absolute; top: -8px; right: -8px;
   background: var(--gradient-main);
