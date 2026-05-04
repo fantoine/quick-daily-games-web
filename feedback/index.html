@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback — Quick Daily Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/feedback.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Quick Daily Games" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <header>
+    <div class="inner">
+      <a class="logo" href="/">Quick Daily Games</a>
+      <nav>
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/beta" class="nav-beta">Beta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>Send feedback</h1>
+      <p class="meta">Bug report, suggestion, or anything else — we read everything.</p>
+    </div>
+
+    <form id="feedback-form" class="feedback-form">
+
+      <div class="field-group">
+        <label for="fb-type">Type</label>
+        <select id="fb-type" name="type" required>
+          <option value="" disabled selected>Select a type…</option>
+          <option value="Bug">Bug report</option>
+          <option value="Suggestion">Suggestion</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="fb-message">Message</label>
+        <textarea id="fb-message" name="message" rows="5" placeholder="Describe the issue or idea…" required></textarea>
+      </div>
+
+      <div class="field-group">
+        <label for="fb-email">Email <span class="field-optional">(optional — if you'd like a reply)</span></label>
+        <input type="email" id="fb-email" name="email" placeholder="your@email.com" autocomplete="email" />
+      </div>
+
+      <button type="submit" class="feedback-submit">Send feedback</button>
+    </form>
+
+    <div id="fb-success" class="fb-feedback fb-feedback--success" hidden>
+      Thanks for the feedback! We'll look into it.
+    </div>
+    <div id="fb-error" class="fb-feedback fb-feedback--error" hidden>
+      Something went wrong. Try again or email us at <a href="mailto:apps@fantoine.com">apps@fantoine.com</a>.
+    </div>
+  </main>
+
+  <footer>
+    <a href="/">Home</a><span class="sep">·</span>
+    <a href="/privacy">Privacy Policy</a><span class="sep">·</span>
+    <a href="/terms">Terms of Use</a>
+  </footer>
+
+  <script>
+    const form = document.getElementById('feedback-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      const data = {
+        type:    document.getElementById('fb-type').value,
+        message: document.getElementById('fb-message').value,
+        email:   document.getElementById('fb-email').value || undefined,
+      };
+
+      try {
+        const res = await fetch('https://formspree.io/f/xjglyqvl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          form.hidden = true;
+          document.getElementById('fb-success').removeAttribute('hidden');
+        } else {
+          throw new Error();
+        }
+      } catch {
+        document.getElementById('fb-error').removeAttribute('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Send feedback';
+      }
+    });
+  </script>
+</body>
+</html>

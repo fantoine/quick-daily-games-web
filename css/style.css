@@ -65,6 +65,15 @@ header nav a {
   transition: color .2s;
 }
 header nav a:hover { color: var(--blue-light); }
+header nav a.nav-beta {
+  color: var(--cyan);
+  border: 1px solid rgba(56,217,217,0.25);
+  border-radius: 6px;
+  padding: 3px 10px;
+  margin-left: 16px;
+  transition: background .2s, border-color .2s;
+}
+header nav a.nav-beta:hover { background: rgba(56,217,217,0.08); border-color: rgba(56,217,217,0.5); color: var(--cyan); }
 
 /* Main */
 main {
@@ -124,6 +133,17 @@ main {
   text-transform: uppercase; letter-spacing: 0.06em;
   font-family: var(--font-display);
 }
+
+/* Beta CTA (index) */
+.beta-cta {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  transition: color .2s;
+}
+.beta-cta:hover { color: var(--cyan); text-decoration: none; }
 
 /* Legal pages */
 .page-header { margin-bottom: 40px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 24px; }
